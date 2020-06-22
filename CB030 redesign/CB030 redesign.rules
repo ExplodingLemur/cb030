@@ -1,0 +1,121 @@
+
+(rules PCB CB030 redesign
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (eu.mihosoft.freerouting.autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 33)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.0)
+    )
+    (layer_rule In1.Cu.Vcc
+      (active off)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.0)
+    )
+    (layer_rule In2.Cu.gnd
+      (active off)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.0)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.0)
+    )
+  )
+  (rule
+    (width 152.4)
+    (clear 152.6)
+    (clear 76.2 (type smd_to_turn_gap))
+    (clear 38.2 (type smd_smd))
+  )
+  (padstack "Via[0-3]_685.8:330.2_um"
+    (shape
+      (circle F.Cu 685.8 0.0 0.0)
+    )
+    (shape
+      (circle In1.Cu.Vcc 685.8 0.0 0.0)
+    )
+    (shape
+      (circle In2.Cu.gnd 685.8 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 685.8 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-3]_685.8:330.2_um" "Via[0-3]_685.8:330.2_um" default
+  )
+  (via 
+    "Via[0-3]_685.8:330.2_um-kicad_default" "Via[0-3]_685.8:330.2_um" "kicad_default"
+  )
+  (via_rule
+    default "Via[0-3]_685.8:330.2_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-3]_685.8:330.2_um-kicad_default"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 152.4)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    VCC GND "Net-(C1-Pad1)" "Net-(C2-Pad1)" "Net-(C3-Pad1)" /~RESET "Net-(CN1-Pad3)" "Net-(CN1-Pad4)"
+    "Net-(CN1-Pad5)" "Net-(CN1-Pad6)" "Net-(CN1-Pad7)" "Net-(CN1-Pad8)" "Net-(CN1-Pad9)" "Net-(CN1-Pad10)" "Net-(CN1-Pad11)" "Net-(CN1-Pad12)"
+    "Net-(CN1-Pad13)" "Net-(CN1-Pad14)" "Net-(CN1-Pad15)" "Net-(CN1-Pad16)" "Net-(CN1-Pad17)" "Net-(CN1-Pad18)" "Net-(CN1-Pad21)" /~CFWR
+    "Net-(CN1-Pad27)" "Net-(CN1-Pad28)" "Net-(CN1-Pad29)" /CFINT "Net-(CN1-Pad32)" /ABUS2 "Net-(CN1-Pad34)" /ABUS1
+    /ABUS3 /~CFCS "Net-(CN1-Pad39)" "Net-(CN1-Pad44)" /DBUS0 /DBUS16 /DBUS1 /DBUS17
+    /DBUS2 /DBUS18 /DBUS3 /DBUS19 "Net-(CN2-Pad11)" /MA0 /MA1 /MA2
+    /MA3 /MA4 /MA5 /MA6 /MA10 /DBUS4 /DBUS20 /DBUS5
+    /DBUS21 /DBUS6 /DBUS22 /DBUS7 /DBUS23 /MA7 /MA11 /MA8
+    /MA9 /~RAS1 /~RAS0 "Net-(CN2-Pad35)" "Net-(CN2-Pad36)" "Net-(CN2-Pad37)" "Net-(CN2-Pad38)" /~CAS0
+    /~CAS2 /~CAS3 /~CAS1 "Net-(CN2-Pad46)" /~SIMMWE "Net-(CN2-Pad48)" /DBUS8 /DBUS24
+    /DBUS9 /DBUS25 /DBUS10 /DBUS26 /DBUS11 /DBUS27 /DBUS12 /DBUS28
+    /DBUS29 /DBUS13 /DBUS30 /DBUS14 /DBUS31 /DBUS15 "Net-(CN2-Pad66)" "Net-(CN2-Pad67)"
+    "Net-(CN2-Pad68)" "Net-(CN2-Pad69)" "Net-(CN2-Pad70)" "Net-(CN2-Pad71)" "Net-(J1-Pad1)" /TXA /RXA "Net-(J1-Pad4)"
+    "Net-(J1-Pad6)" "Net-(J2-Pad1)" /TXB /RXB "Net-(J2-Pad4)" "Net-(J2-Pad6)" "Net-(J3-Pad1)" "Net-(J3-Pad3)"
+    "Net-(J3-Pad4)" "Net-(J3-Pad5)" "Net-(J3-Pad6)" "Net-(J3-Pad7)" "Net-(J3-Pad8)" "Net-(J3-Pad9)" /ABUS15 /ABUS14
+    /ABUS13 /ABUS12 /ABUS11 /ABUS10 /ABUS9 /ABUS8 /ABUS7 /ABUS6
+    /ABUS5 /ABUS4 /ABUS0 "Net-(P1-Pad19)" "Net-(P1-Pad21)" /~INTX /~MREQ /R~W
+    /~DSACK0 /~IORQ "Net-(P1-Pad37)" "Net-(P1-Pad38)" /SPARE3 /SPARE4 /~AVEC "Net-(R2-Pad2)"
+    /~MMUDIS /~BR /~IRQ681 /~CFRD /CLK "Net-(U1-PadB1)" /FC1 /FC2
+    /~STERM /~BERR /~CBACK /~CBREQ /~CIIN "Net-(U1-PadM1)" "Net-(U1-PadB2)" "Net-(U1-PadC2)"
+    /FC0 /~DSACK1 /nAS "Net-(U1-PadK2)" /SIZ0 "Net-(U1-PadM2)" "Net-(U1-PadA3)" "Net-(U1-PadB3)"
+    "Net-(U1-PadD3)" /SIZ1 "Net-(U1-PadA4)" "Net-(U1-PadB4)" "Net-(U1-PadF4)" /ABUS26 /ABUS27 "Net-(U1-PadD5)"
+    "Net-(U1-PadK5)" /ABUS24 /ABUS25 /ABUS23 /ABUS22 /ABUS21 /ABUS20 /ABUS18
+    /ABUS19 /ABUS16 /ABUS17 "Net-(U1-PadF10)" "Net-(U1-PadE12)" /~IPL2 "Net-(U1-PadJ12)" "Net-(U1-PadE13)"
+    /~IPL1 /~IPL0 "Net-(U1-PadJ13)" /~CSBOOT /~OE /~IACK681 /~CS681 "Net-(X1-Pad1)"
+    /TP4 /TP11 "Net-(J6-Pad17)" /TP10 /TP9 /TP8 "Net-(J6-Pad13)" "Net-(J6-Pad11)"
+    "Net-(J6-Pad10)" /TP18 /TP17 /TP16 /TP15 /TP14 /TP13 /TP12
+    "Net-(J6-Pad2)" "Net-(TP22-Pad1)"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 152.4)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
